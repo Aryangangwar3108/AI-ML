@@ -59,3 +59,30 @@ print(df.info())
 df.head()
 df.info()
 df.head()
+
+plt.hist(df["price_aprox_usd"])
+plt.xlabel("Price [$]")
+plt.ylabel("Count")
+plt.title("Distribution of Apartment Sizes");
+
+plt.scatter(x=df["surface_covered_in_m2"] , y = df["price_aprox_usd"])
+plt.xlabel("Area [sq meters]")
+plt.ylabel("Price [USD]")
+plt.title(" Mexico City: Price vs Area");
+
+# Plot Mapbox location and price
+fig = px.scatter_mapbox(
+    df,  # Our DataFrame
+    lat="lat",
+    lon="lon",
+    center={"lat": 19.43, "lon": -99.13},  # Map will be centered on Mexico City
+    width=600,  # Width of map
+    height=600,  # Height of map
+    hover_data=["price_aprox_usd"],  # Display price when hovering mouse over house
+)
+
+# Add mapbox_style to figure layout
+fig.update_layout(mapbox_style="open-street-map")
+
+# Show figure
+fig.show()
