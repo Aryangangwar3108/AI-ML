@@ -86,3 +86,13 @@ fig.update_layout(mapbox_style="open-street-map")
 
 # Show figure
 fig.show()
+
+plt.boxplot(df["area_m2"] , vert=False)
+plt.xlabel("Area[sq meters]")
+plt.title("Distribution of Home Sizes");
+
+# Used Matplotlib to create boxplot of "price_usd"
+plt.boxplot(df["price_usd"] , vert =False)
+plt.xlabel("Price [USD]")
+plt.title("Distribution of Home Prices");
+
